@@ -134,8 +134,7 @@ public class ReacharoundPlacingModule extends QuarkModule {
 
 			ItemUseContext context = new ItemUseContext(player, hand, new BlockRayTraceResult(new Vector3d(0.5F, 1F, 0.5F), target.dir, target.pos, false));
 			boolean remote = player.world.isRemote;
-			Item item = stack.getItem();
-			ActionResultType res = remote ? ActionResultType.SUCCESS : item.onItemUse(context);
+			ActionResultType res = remote ? ActionResultType.SUCCESS : stack.onItemUse(context);
 
 			if (res != ActionResultType.PASS) {
 				event.setCanceled(true);
